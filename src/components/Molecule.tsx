@@ -72,7 +72,7 @@ function Structure({ pointer }: { pointer: React.MutableRefObject<{ x: number; y
   });
 
   return (
-    <group ref={group} scale={1.05}>
+    <group ref={group} scale={0.9}>
       {bonds.map(([i, j], k) => (
         <Bond key={k} a={vecs[i]} b={vecs[j]} />
       ))}
@@ -119,7 +119,7 @@ export default function Molecule() {
       }}
     >
       <Canvas
-        camera={{ position: [0, 0, 7.5], fov: 42 }}
+        camera={{ position: [0, 0, 9.6], fov: 40 }}
         dpr={[1, 1.8]}
         gl={{ antialias: true, alpha: true }}
       >
