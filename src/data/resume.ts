@@ -179,3 +179,41 @@ export const engagements: Engagement[] = [
 ];
 
 export const languages = ['English', 'Hindi', 'Bengali'];
+
+export type Principle = { no: string; title: string; body: string; tone: 'yellow' | 'green' | 'red' };
+export const principles: Principle[] = [
+  {
+    no: '01',
+    title: 'Protocol before outcome',
+    body: 'A result is only as trustworthy as the process that produced it. I build the documentation, review gates and audit trails that let findings stand up to scrutiny.',
+    tone: 'green',
+  },
+  {
+    no: '02',
+    title: 'Governance people will actually use',
+    body: 'The best SOP is the one researchers follow. I design policy and training that translate abstract standards into daily practice — clear, proportionate, humane.',
+    tone: 'yellow',
+  },
+  {
+    no: '03',
+    title: 'Integrity is a culture, not a checklist',
+    body: 'Compliance keeps you legal; culture keeps you honest. I work across committees, mentoring and advocacy to make ethical conduct the default, not the exception.',
+    tone: 'red',
+  },
+];
+
+export type Signal = { tone: 'yellow' | 'green' | 'red'; label: string; meaning: string };
+export const signalSystem: Signal[] = [
+  { tone: 'green', label: 'Green', meaning: 'Approved & compliant — evidence in place, process sound, cleared to proceed.' },
+  { tone: 'yellow', label: 'Yellow', meaning: 'Attention — a gap to close, a document to complete, a decision that needs a human.' },
+  { tone: 'red', label: 'Red', meaning: 'Flag — a breach, conflict or risk that stops the line until it is resolved.' },
+];
+
+export const services: string[] = [
+  'Research-ethics committee (IRB / IBSC) setup & leadership',
+  'SOP, policy & governance-framework design',
+  'Responsible conduct of research training & curriculum',
+  'Regulatory compliance & accreditation documentation',
+  'Responsible-AI usage frameworks for research & education',
+  'Publication ethics, IP & data-integrity advisory',
+];

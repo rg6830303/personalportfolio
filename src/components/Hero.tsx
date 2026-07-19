@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
+import Magnetic from './Magnetic';
 
 const Molecule = dynamic(() => import('./Molecule'), {
   ssr: false,
@@ -94,21 +95,25 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 1.15, ease: EASE }}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
-              <Link
-                href="/journey"
-                data-cursor
-                className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 text-sm text-canvas transition-transform hover:-translate-y-0.5"
-              >
-                Explore the journey
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-              <Link
-                href="/contact"
-                data-cursor
-                className="inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 text-sm text-ink transition-colors hover:border-ink"
-              >
-                Get in touch
-              </Link>
+              <Magnetic>
+                <Link
+                  href="/journey"
+                  data-cursor
+                  className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 text-sm text-canvas transition-transform hover:-translate-y-0.5"
+                >
+                  Explore the journey
+                  <span className="cta-arrow">→</span>
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link
+                  href="/contact"
+                  data-cursor
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 text-sm text-ink transition-colors hover:border-ink"
+                >
+                  Get in touch
+                </Link>
+              </Magnetic>
             </motion.div>
           </div>
         </div>

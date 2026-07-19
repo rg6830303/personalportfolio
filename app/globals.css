@@ -165,3 +165,68 @@ body {
 .perspective {
   perspective: 1200px;
 }
+
+/* Faint ruled "ledger" texture — reinforces the compliance-record motif and
+   keeps large sections from reading as empty flat fills. */
+.ledger {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 43px,
+    var(--line) 43px,
+    var(--line) 44px
+  );
+}
+
+/* Fine dot-grid, used behind feature blocks */
+.dotgrid {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Section index label */
+.section-index {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  z-index: 55;
+  background: linear-gradient(90deg, var(--red), var(--yellow) 50%, var(--green));
+}
+
+/* A crafted arrow that draws itself on hover */
+.cta-arrow {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .cta-arrow {
+  transform: translateX(6px);
+}
+
+/* Soft floating drift for decorative marks */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+.drift {
+  animation: drift 9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .drift {
+    animation: none;
+  }
+}

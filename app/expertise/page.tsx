@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
 import { Reveal, RevealHeading } from '@/components/Reveal';
-import { competencies, education, training, engagements, languages } from '@/data/resume';
+import { competencies, education, training, engagements, languages, signalSystem } from '@/data/resume';
 
 export const metadata: Metadata = {
   title: 'Expertise',
@@ -48,6 +48,43 @@ export default function ExpertisePage() {
               <p className="mt-2 text-sm text-graphite">{c.note}</p>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* SIGNAL SYSTEM — explains the colour language of the whole site */}
+      <section className="relative overflow-hidden border-t border-line bg-ink py-24 text-canvas md:py-28">
+        <div className="shell">
+          <div className="grid gap-12 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-5">
+              <Reveal>
+                <p className="section-index mb-6 text-canvas/50">The colour system</p>
+              </Reveal>
+              <h2 className="display text-[clamp(1.8rem,4.5vw,3.2rem)] leading-tight">
+                <RevealHeading text="Not decoration. A working vocabulary." />
+              </h2>
+              <Reveal delay={0.15}>
+                <p className="mt-6 max-w-sm text-canvas/70">
+                  Every ethics review comes down to one of three states. This site borrows that same
+                  traffic-light language — the way a real compliance dashboard speaks.
+                </p>
+              </Reveal>
+            </div>
+            <div className="md:col-span-7">
+              <div className="space-y-4">
+                {signalSystem.map((s, i) => (
+                  <Reveal key={s.label} delay={i * 0.1}>
+                    <div className="group flex items-start gap-5 rounded border border-canvas/15 p-6 transition-colors hover:border-canvas/40">
+                      <span className={`mt-1 h-4 w-4 shrink-0 rounded-full bg-tone-${s.tone} ring-4 ring-white/5`} />
+                      <div>
+                        <p className="font-display text-xl">{s.label}</p>
+                        <p className="mt-1 text-sm leading-relaxed text-canvas/65">{s.meaning}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -145,22 +182,28 @@ export default function ExpertisePage() {
         </div>
       </section>
 
-      <section className="shell py-24">
-        <Reveal>
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <h2 className="display max-w-[14ch] text-[clamp(1.8rem,5vw,3.4rem)]">
-              Let&apos;s put this to work.
-            </h2>
-            <Link
-              href="/contact"
-              data-cursor
-              className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3.5 text-sm text-canvas transition-transform hover:-translate-y-0.5"
-            >
-              Start a conversation
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
-        </Reveal>
+      <section className="relative overflow-hidden py-28 md:py-36">
+        <div className="dotgrid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+        <div className="shell relative">
+          <Reveal>
+            <div className="flex flex-col items-start gap-10 rounded-lg border border-line bg-canvas p-10 md:flex-row md:items-center md:justify-between md:p-14">
+              <div>
+                <p className="eyebrow mb-5">Next step</p>
+                <h2 className="display max-w-[16ch] text-[clamp(1.9rem,5vw,3.6rem)] leading-[1.05]">
+                  Let&apos;s put this to work.
+                </h2>
+              </div>
+              <Link
+                href="/contact"
+                data-cursor
+                className="group inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-sm text-canvas transition-transform hover:-translate-y-0.5"
+              >
+                Start a conversation
+                <span className="cta-arrow">→</span>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
       </section>
     </>
   );

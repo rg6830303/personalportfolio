@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import Marquee from '@/components/Marquee';
 import PortraitCard from '@/components/PortraitCard';
 import { Reveal, RevealHeading } from '@/components/Reveal';
-import { profile, stats, competencies } from '@/data/resume';
+import { profile, stats, competencies, principles } from '@/data/resume';
 
 const toneClass: Record<string, string> = {
   yellow: 'bg-signal-yellow',
@@ -102,6 +102,70 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* APPROACH */}
+      <section className="relative overflow-hidden py-24 md:py-32">
+        <div className="dotgrid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
+        <div className="shell relative">
+          <div className="mb-16 grid gap-6 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-8">
+              <Reveal>
+                <p className="eyebrow mb-5">How I work</p>
+              </Reveal>
+              <h2 className="display text-[clamp(2rem,6vw,4.5rem)]">
+                <RevealHeading text="Three convictions behind every framework." />
+              </h2>
+            </div>
+            <Reveal delay={0.1} className="md:col-span-4">
+              <p className="text-graphite md:text-right">
+                Method carried from the laboratory bench into institutional governance.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {principles.map((p, i) => (
+              <Reveal key={p.no} delay={i * 0.1}>
+                <article className="group relative flex h-full flex-col justify-between overflow-hidden rounded border border-line bg-canvas p-8 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-30px_rgba(20,20,18,0.35)]">
+                  <span className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-tone-${p.tone} transition-transform duration-500 group-hover:scale-x-100`} />
+                  <div className="mb-16 flex items-center justify-between">
+                    <span className="font-mono text-sm text-graphite">{p.no}</span>
+                    <span className={`h-3 w-3 rounded-full bg-tone-${p.tone}`} />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-2xl leading-tight">{p.title}</h3>
+                    <p className="mt-4 text-sm leading-relaxed text-graphite">{p.body}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MANIFESTO */}
+      <section className="border-y border-line bg-ink py-24 text-canvas md:py-36">
+        <div className="shell">
+          <Reveal>
+            <p className="section-index mb-10 text-canvas/50">Statement</p>
+          </Reveal>
+          <Reveal>
+            <blockquote className="display max-w-5xl text-[clamp(1.8rem,4.6vw,3.6rem)] leading-[1.12]">
+              Good research earns trust one honest decision at a time. My job is to make the honest
+              decision <span className="italic text-signal-yellow">the easy one</span> — through systems
+              clear enough to follow and culture strong enough to want to.
+            </blockquote>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-12 flex items-center gap-4">
+              <span className="h-px w-12 bg-canvas/40" />
+              <span className="font-mono text-xs uppercase tracking-widest text-canvas/60">
+                Dr. Raka Ghosh
+              </span>
+            </div>
+          </Reveal>
         </div>
       </section>
 

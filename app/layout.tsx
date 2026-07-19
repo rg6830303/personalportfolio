@@ -6,6 +6,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Cursor from '@/components/Cursor';
 import PageTransition from '@/components/PageTransition';
+import ScrollProgress from '@/components/ScrollProgress';
 
 const display = Fraunces({
   subsets: ['latin'],
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body className="grain font-sans antialiased">
         <Cursor />
+        <ScrollProgress />
         <Nav />
         <PageTransition>
           <main id="top">{children}</main>

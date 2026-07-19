@@ -19,7 +19,30 @@ export default function JourneyPage() {
         intro="A non-linear path with a consistent thread: the discipline of doing research correctly. Synthetic chemistry taught me protocol, documentation and consequence — everything since has been about scaling that discipline across institutions."
       />
 
+      {/* At a glance */}
+      <section className="shell pb-16">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded border border-line bg-line md:grid-cols-4">
+          {[
+            { v: '1998', l: 'Where it began — IIT Bombay', t: 'green' },
+            { v: '7', l: 'Employers across R&D, academia & governance', t: 'red' },
+            { v: '3', l: 'Sectors: pharma, education, public digital infra', t: 'yellow' },
+            { v: '2004', l: 'First regulated lab role — Cipla, under CDSCO', t: 'green' },
+          ].map((s, i) => (
+            <Reveal key={i} delay={i * 0.08} className="bg-canvas p-6">
+              <span className={`mb-3 block h-1 w-8 bg-tone-${s.t}`} />
+              <div className="display text-3xl md:text-4xl">{s.v}</div>
+              <div className="mt-2 text-xs leading-snug text-graphite">{s.l}</div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       <section className="shell pb-10">
+        <div className="mb-10 flex items-center gap-4">
+          <span className="section-index text-signal-red">Timeline</span>
+          <span className="h-px flex-1 bg-line" />
+          <span className="section-index text-graphite">Present → 1998</span>
+        </div>
         <Timeline />
       </section>
 

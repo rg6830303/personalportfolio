@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
-import { Reveal } from '@/components/Reveal';
-import { profile } from '@/data/resume';
+import Marquee from '@/components/Marquee';
+import { Reveal, RevealHeading } from '@/components/Reveal';
+import { profile, services, languages } from '@/data/resume';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -50,27 +51,64 @@ export default function ContactPage() {
           ))}
         </div>
 
-        <Reveal delay={0.1}>
-          <div className="mt-16 grid gap-10 md:grid-cols-12">
-            <div className="md:col-span-7">
-              <p className="display text-[clamp(1.6rem,4vw,2.8rem)] leading-tight">
-                &ldquo;The rigour of the laboratory, applied to the governance of research.&rdquo;
+        {/* What I can help with */}
+        <div className="mt-20 grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Reveal>
+              <p className="eyebrow mb-6 flex items-center gap-3">
+                <span className="h-2 w-2 rounded-full bg-signal-green" /> Where I add value
               </p>
-            </div>
-            <div className="md:col-span-5 md:pt-2">
-              <p className="text-graphite">
-                Based in India and available across time zones. For committee, advisory and full-time
-                governance roles, please include the institution and mandate in your first note — it helps
-                me respond with something useful.
+            </Reveal>
+            <h2 className="display text-[clamp(1.8rem,4vw,3rem)] leading-tight">
+              <RevealHeading text="Bring me in for the work that has to be right." />
+            </h2>
+            <Reveal delay={0.15}>
+              <p className="mt-6 max-w-sm text-graphite">
+                Committee, advisory and full-time governance mandates. Include the institution and the
+                mandate in your first note — it helps me respond with something useful.
               </p>
-              <div className="mt-8 flex items-center gap-3 font-mono text-xs text-graphite">
-                <span className="h-2 w-2 rounded-full bg-signal-green" />
+            </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-line px-5 py-2.5 font-mono text-xs text-graphite">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-green opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-signal-green" />
+                </span>
                 Currently open to new mandates
               </div>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          <div className="md:col-span-7">
+            <ul className="rule">
+              {services.map((s, i) => (
+                <Reveal key={i} delay={i * 0.05} as="li">
+                  <div className="group flex items-center gap-6 border-b border-line py-5">
+                    <span className="font-mono text-xs text-graphite">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="flex-1 text-base leading-snug text-ink transition-transform duration-300 group-hover:translate-x-1 md:text-lg">
+                      {s}
+                    </span>
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-signal-yellow opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  </div>
+                </Reveal>
+              ))}
+            </ul>
+            <Reveal delay={0.1}>
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+                <span className="eyebrow">Languages</span>
+                {languages.map((l) => (
+                  <span key={l} className="flex items-center gap-2 text-sm text-ink">
+                    <span className="h-1.5 w-1.5 rounded-full bg-signal-green" />
+                    {l}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
       </section>
+
+      <Marquee items={["Let's build integrity into it", 'Research that keeps its word', 'Ethics · Compliance · Governance']} />
     </>
   );
 }
