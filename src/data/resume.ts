@@ -7,6 +7,10 @@ export const profile = {
   location: 'India',
   email: 'ghoshraka3@gmail.com',
   phone: '+91 98363 93311',
+  phoneDial: '+919836393311',
+  whatsapp: '919836393311',
+  whatsappMessage:
+    "Hello Dr. Ghosh, I found your portfolio and would like to connect regarding a research-ethics / governance opportunity.",
   linkedin: 'https://www.linkedin.com/in/dr-raka-ghosh-8a2134213',
   linkedinLabel: 'in/dr-raka-ghosh',
   photo: '/img/raka-ghosh.jpg',

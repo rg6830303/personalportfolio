@@ -37,8 +37,18 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="link-underline hover:text-ink">
-                  {profile.phone}
+                <a
+                  href={`https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(profile.whatsappMessage)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-underline hover:text-ink"
+                >
+                  WhatsApp ↗
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${profile.phoneDial}`} className="link-underline hover:text-ink">
+                  Call {profile.phone}
                 </a>
               </li>
             </ul>

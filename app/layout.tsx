@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Cursor from '@/components/Cursor';
 import PageTransition from '@/components/PageTransition';
 import ScrollProgress from '@/components/ScrollProgress';
+import WhatsAppFab from '@/components/WhatsAppFab';
 
 const display = Fraunces({
   subsets: ['latin'],
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="top">{children}</main>
           <Footer />
         </PageTransition>
+        <WhatsAppFab />
       </body>
     </html>
   );

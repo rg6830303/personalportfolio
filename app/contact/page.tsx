@@ -2,16 +2,20 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import Marquee from '@/components/Marquee';
 import { Reveal, RevealHeading } from '@/components/Reveal';
+import { WhatsAppIcon, PhoneIcon } from '@/components/Icons';
 import { profile, services, languages } from '@/data/resume';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Dr. Raka Ghosh for research-ethics, compliance and governance roles.',
+  description: 'Get in touch with Dr. Raka Ghosh by email, phone, WhatsApp or LinkedIn for research-ethics, compliance and governance roles.',
 };
 
+const whatsappHref = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(profile.whatsappMessage)}`;
+
 const channels = [
-  { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, tone: 'bg-signal-red' },
-  { label: 'Phone', value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}`, tone: 'bg-signal-yellow' },
+  { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, tone: 'bg-signal-red', external: false },
+  { label: 'Call', value: profile.phone, href: `tel:${profile.phoneDial}`, tone: 'bg-signal-yellow', external: false },
+  { label: 'WhatsApp', value: profile.phone, href: whatsappHref, tone: 'bg-signal-green', external: true },
   { label: 'LinkedIn', value: profile.linkedinLabel, href: profile.linkedin, tone: 'bg-signal-green', external: true },
 ];
 
@@ -26,24 +30,30 @@ export default function ContactPage() {
       />
 
       <section className="shell pb-24">
-        <div className="grid gap-px overflow-hidden rounded border border-line bg-line md:grid-cols-3">
+        <div className="grid gap-px overflow-hidden rounded border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
           {channels.map((c, i) => (
-            <Reveal key={c.label} delay={i * 0.08}>
+            <Reveal key={c.label} delay={i * 0.06}>
               <a
                 href={c.href}
                 target={c.external ? '_blank' : undefined}
                 rel={c.external ? 'noreferrer' : undefined}
                 data-cursor
-                className="group flex h-full flex-col justify-between gap-10 bg-canvas p-8 transition-colors hover:bg-paper"
+                className="group flex h-full flex-col justify-between gap-10 bg-canvas p-7 transition-colors hover:bg-paper"
               >
                 <div className="flex items-center justify-between">
                   <span className="eyebrow">{c.label}</span>
                   <span className={`h-2.5 w-2.5 rounded-full ${c.tone}`} />
                 </div>
-                <div className="flex items-end justify-between gap-4">
-                  <span className="break-all font-display text-xl leading-tight md:text-2xl">{c.value}</span>
-                  <span className="shrink-0 text-lg text-graphite transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-ink">
-                    ↗
+                <div className="flex items-end justify-between gap-3">
+                  <span className="break-all font-display text-lg leading-tight md:text-xl">{c.value}</span>
+                  <span className="shrink-0 text-graphite transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-ink">
+                    {c.label === 'WhatsApp' ? (
+                      <WhatsAppIcon className="h-5 w-5" />
+                    ) : c.label === 'Call' ? (
+                      <PhoneIcon className="h-5 w-5" />
+                    ) : (
+                      <span className="text-lg">↗</span>
+                    )}
                   </span>
                 </div>
               </a>
