@@ -1,0 +1,181 @@
+export const profile = {
+  name: 'Dr. Raka Ghosh',
+  firstName: 'Raka',
+  lastName: 'Ghosh',
+  role: 'Research Ethics, Compliance & Academic Governance',
+  disciplines: ['Research Ethics & Compliance', 'Academic Governance', 'Research Integrity'],
+  location: 'India',
+  email: 'ghoshraka3@gmail.com',
+  phone: '+91 98363 93311',
+  linkedin: 'https://www.linkedin.com/in/dr-raka-ghosh-8a2134213',
+  linkedinLabel: 'in/dr-raka-ghosh',
+  photo: '/img/raka-ghosh.jpg',
+  yearsExperience: '17+',
+  tagline:
+    'A synthetic chemist turned governance leader — building the systems, policies and culture that keep research honest.',
+  summary:
+    'Accomplished researcher and academic leader with a Ph.D. in Synthetic Organic Chemistry from IIT Bombay and 17+ years spanning pharmaceutical R&D, institutional governance, and large-scale digital education. I pair hands-on research experience — including regulatory-compliant laboratory operations at Cipla under CDSCO and GMP frameworks — with senior academic administration at the National Digital Library of India. My work sits across the full research lifecycle: responsible conduct of research, data privacy, IP, and publication ethics, informed by doctoral training, pharmaceutical compliance, and continued study in responsible AI, bibliometrics, and systematic review.',
+};
+
+export type Stat = { value: string; label: string; tone: 'yellow' | 'green' | 'red' };
+export const stats: Stat[] = [
+  { value: '17+', label: 'Years across research & governance', tone: 'green' },
+  { value: 'Ph.D.', label: 'Synthetic Organic Chemistry, IIT Bombay', tone: 'red' },
+  { value: '7 yrs', label: 'Teaching research ethics & integrity', tone: 'yellow' },
+  { value: '2 nations', label: 'Academic integrity programmes delivered', tone: 'green' },
+];
+
+export type Competency = { title: string; note: string; tone: 'yellow' | 'green' | 'red' };
+export const competencies: Competency[] = [
+  { title: 'Research Ethics Governance', note: 'Frameworks that hold up under scrutiny', tone: 'green' },
+  { title: 'Regulatory Compliance', note: 'CDSCO / ICMR / GLP / GMP', tone: 'red' },
+  { title: 'Ethics Committee Management', note: 'IRB & IBSC operations end to end', tone: 'yellow' },
+  { title: 'SOP & Policy Development', note: 'From draft to institutional adoption', tone: 'green' },
+  { title: 'IRB / IBSC Operations', note: 'Review cycles, quorum, documentation', tone: 'red' },
+  { title: 'Research Integrity & QA', note: 'Monitoring, deviations, corrective action', tone: 'red' },
+  { title: 'Training Design & Delivery', note: 'Responsible conduct of research', tone: 'yellow' },
+  { title: 'Accreditation Documentation', note: 'Audit-ready records at scale', tone: 'green' },
+  { title: 'Stakeholder Engagement', note: 'MoE, UGC & cross-functional bodies', tone: 'red' },
+  { title: 'Responsible AI in Research', note: 'Ethical deployment & usage guidelines', tone: 'yellow' },
+  { title: 'Data Privacy & Confidentiality', note: 'High-stakes institutional records', tone: 'green' },
+  { title: 'Project & Records Management', note: 'Audit trails that survive review', tone: 'yellow' },
+];
+
+export type Role = {
+  title: string;
+  org: string;
+  meta?: string;
+  period: string;
+  tone: 'yellow' | 'green' | 'red';
+  award?: string;
+  points: string[];
+};
+
+export const experience: Role[] = [
+  {
+    title: 'Senior Project Manager — Content Creation & Research Governance',
+    org: 'National Digital Library of India, IIT Kharagpur',
+    meta: 'Ministry of Education, Govt. of India · NMEICT Mandate',
+    period: 'Dec 2023 — Present',
+    tone: 'green',
+    points: [
+      'Oversee governance of large-scale academic content operations within a nationally mandated digital repository — applying compliance standards analogous to institutional research ethics requirements.',
+      'Develop institutional SOPs and workflow protocols for content quality assurance, coordinating multi-disciplinary academic and technology teams across distributed verticals.',
+      'Engage with regulatory and accreditation bodies (MoE, UGC) to ensure alignment with national education and research policy frameworks.',
+      'Design performance-monitoring systems to track protocol adherence, flag deviations and implement corrective action — directly transferable to research ethics compliance monitoring.',
+      'Champion responsible AI integration in educational content production, developing usage guidelines and ethics frameworks for AI-assisted knowledge systems.',
+    ],
+  },
+  {
+    title: 'Deputy Manager — Institutional Governance & Communications',
+    org: 'BDG',
+    period: 'May 2023 — Dec 2023',
+    tone: 'red',
+    points: [
+      'Stewarded institutional policy communications and compliance documentation for a ₹300-crore enterprise, ensuring regulatory alignment and audit-readiness across functions.',
+      'Drafted and operationalised governance frameworks, stakeholder communication SOPs and cross-functional coordination protocols.',
+      'Managed confidential organisational records and structured compliance reporting for senior leadership — demonstrating discretion and accuracy in high-stakes environments.',
+    ],
+  },
+  {
+    title: 'Product Analyst & Research Ethics Trainer (Academic)',
+    org: 'Aurus Tech Pvt. Ltd.',
+    period: 'Dec 2021 — Nov 2022',
+    tone: 'yellow',
+    points: [
+      'Designed and delivered academic integrity and responsible research conduct modules for higher-education platforms across India and Nigeria.',
+      'Advised faculty on research protocol design, ethical content standards and informed-consent requirements in digital education research.',
+      'Coordinated cross-continental academic review panels — managing review cycles, timelines and documentation, mirroring IRB and ethics committee operations.',
+    ],
+  },
+  {
+    title: 'Coordinator & Lecturer — Science, Research Ethics & Curriculum',
+    org: 'CPS (HS Section)',
+    period: 'Jun 2014 — Dec 2021',
+    tone: 'green',
+    award: 'Pathbreaker of the Year 2021',
+    points: [
+      'Designed and delivered research ethics, responsible conduct of research and data integrity coursework for 7+ years.',
+      'Developed training materials on informed consent, conflict of interest, data privacy and ethical research design for students and faculty.',
+      'Coordinated interdisciplinary academic committees — managing member schedules, agendas, minutes and attendance records.',
+      'Mentored doctoral and research scholars on publication ethics, peer review standards and research integrity norms.',
+    ],
+  },
+  {
+    title: 'Scientific Researcher — Pharmaceutical R&D & Regulatory Compliance',
+    org: 'Cipla Ltd.',
+    period: 'Mar 2004 — Dec 2009',
+    tone: 'red',
+    points: [
+      'Operated within CDSCO, GLP and GMP regulatory frameworks — managing compliance documentation, protocol design, deviation reporting and audit-ready records across R&D pipelines.',
+      'Drafted and followed SOPs for synthetic route design, technology transfer and plant-scale API production.',
+      'Conducted literature and patent analysis to ensure IP compliance and inform regulatory submissions.',
+      'Coordinated multi-functional review of protocol amendments, adverse observations and corrective action plans; liaised with regulatory officers.',
+    ],
+  },
+  {
+    title: 'Research Associate',
+    org: 'Ciba Speciality Chemicals',
+    period: 'Feb 2003 — Feb 2004',
+    tone: 'yellow',
+    points: [
+      'Contributed to speciality chemical R&D within an internationally regulated industrial research environment, maintaining GLP-compliant documentation and safety protocols.',
+    ],
+  },
+  {
+    title: 'Research Scholar & Teaching Assistant',
+    org: 'IIT Bombay',
+    period: 'Jul 1998 — Aug 2003',
+    tone: 'green',
+    points: [
+      'Conducted doctoral research in Synthetic Organic Chemistry, applying institutional research ethics, laboratory safety standards and academic integrity protocols throughout.',
+      'Delivered undergraduate Chemistry instruction under a competitive MoE-funded Teaching Assistantship at an elite research institution.',
+    ],
+  },
+];
+
+export type Education = { degree: string; institution: string; note: string; tone: 'yellow' | 'green' | 'red' };
+export const education: Education[] = [
+  {
+    degree: 'Ph.D. in Synthetic Organic Chemistry',
+    institution: 'Indian Institute of Technology Bombay',
+    note: 'Doctoral training in responsible conduct of research, laboratory ethics, IP, data integrity and peer review.',
+    tone: 'red',
+  },
+  {
+    degree: 'Postgraduate Diploma in Project Management',
+    institution: 'Emeritus School of Management / University of California',
+    note: 'SOP design, stakeholder coordination, workflow management, compliance reporting and risk governance.',
+    tone: 'green',
+  },
+  {
+    degree: 'Industry Programme in Drug Design & Patenting',
+    institution: 'Bioinformatics Institute of India, Noida',
+    note: 'Intellectual property rights, patent ethics and regulatory frameworks in biomedical research.',
+    tone: 'yellow',
+  },
+  {
+    degree: 'Certification — AI Tools & Emerging Digital Technologies',
+    institution: 'BE10X',
+    note: 'Foundations of responsible AI, ethical deployment and digital governance in academic settings.',
+    tone: 'green',
+  },
+];
+
+export const training: string[] = [
+  'Responsible AI in Research & Education — Faculty Development Programme, ISI & Presidency University',
+  'Systematic Review Methodology & Research Integrity — Institute for Development of Science & Knowledge (IDSK)',
+  'Bibliometrics, Scholarly Communication & Publication Ethics — LIBRARIAN Colloquium',
+  'AI Competency Frameworks for Education — HKLA / The Education University of Hong Kong',
+  'CII Education East Summits — National dialogues on research governance & industry–academia collaboration',
+];
+
+export type Engagement = { name: string; note: string };
+export const engagements: Engagement[] = [
+  { name: 'Iron Lady Warrior', note: "Mentorship and advocacy network championing women's leadership and inclusion in STEM and academia." },
+  { name: 'Mentor to Go', note: 'App-based mentoring platform supporting economically disadvantaged youth toward research and industry careers.' },
+  { name: 'SK & Associates', note: 'Strategic alliance associate fostering student entrepreneurship, innovation ecosystems and ethical research culture.' },
+  { name: 'Writebox', note: 'R&D mentorship and academic development leadership for an EdTech research community.' },
+];
+
+export const languages = ['English', 'Hindi', 'Bengali'];
