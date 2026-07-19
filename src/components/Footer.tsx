@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { profile } from '@/data/resume';
+import { LinkedInIcon, WhatsAppIcon } from './Icons';
+
+const whatsappHref = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(profile.whatsappMessage)}`;
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -7,14 +10,38 @@ export default function Footer() {
     <footer className="relative mt-32 border-t border-line bg-paper">
       <div className="shell py-16 md:py-20">
         {/* Email — its own full-width row so the long address never collides */}
-        <div className="border-b border-line pb-12">
-          <p className="eyebrow mb-5">Let&apos;s build integrity into it</p>
-          <a
-            href={`mailto:${profile.email}`}
-            className="display link-underline inline-block max-w-full break-words text-[clamp(1.6rem,6.5vw,3.5rem)] leading-none"
-          >
-            {profile.email}
-          </a>
+        <div className="flex flex-col gap-8 border-b border-line pb-12 md:flex-row md:items-end md:justify-between">
+          <div className="min-w-0">
+            <p className="eyebrow mb-5">Let&apos;s build integrity into it</p>
+            <a
+              href={`mailto:${profile.email}`}
+              className="display link-underline inline-block max-w-full break-words text-[clamp(1.6rem,6.5vw,3.5rem)] leading-none"
+            >
+              {profile.email}
+            </a>
+          </div>
+          <div className="flex shrink-0 items-center gap-3">
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              data-cursor
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-line text-ink transition-colors hover:bg-ink hover:text-canvas"
+            >
+              <LinkedInIcon className="h-5 w-5" />
+            </a>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              data-cursor
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-line text-signal-green transition-colors hover:bg-signal-green hover:text-canvas"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+            </a>
+          </div>
         </div>
 
         <div className="mt-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3">

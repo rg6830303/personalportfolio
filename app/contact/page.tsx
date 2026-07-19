@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
 import Marquee from '@/components/Marquee';
 import { Reveal, RevealHeading } from '@/components/Reveal';
-import { WhatsAppIcon, PhoneIcon } from '@/components/Icons';
+import { WhatsAppIcon, PhoneIcon, LinkedInIcon } from '@/components/Icons';
 import { profile, services, languages } from '@/data/resume';
 
 export const metadata: Metadata = {
@@ -51,6 +51,8 @@ export default function ContactPage() {
                       <WhatsAppIcon className="h-5 w-5" />
                     ) : c.label === 'Call' ? (
                       <PhoneIcon className="h-5 w-5" />
+                    ) : c.label === 'LinkedIn' ? (
+                      <LinkedInIcon className="h-5 w-5" />
                     ) : (
                       <span className="text-lg">↗</span>
                     )}

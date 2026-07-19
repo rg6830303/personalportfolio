@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { LinkedInIcon, WhatsAppIcon } from './Icons';
+import { profile } from '@/data/resume';
 
 const links = [
   { href: '/', label: 'Index', no: '01' },
@@ -11,6 +13,8 @@ const links = [
   { href: '/expertise', label: 'Expertise', no: '03' },
   { href: '/contact', label: 'Contact', no: '04' },
 ];
+
+const whatsappHref = `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent(profile.whatsappMessage)}`;
 
 export default function Nav() {
   const pathname = usePathname();
@@ -36,6 +40,7 @@ export default function Nav() {
   }, [open]);
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         scrolled ? 'bg-canvas/85 backdrop-blur-md' : 'bg-transparent'
@@ -98,48 +103,78 @@ export default function Nav() {
           />
         </button>
       </div>
-
-      {/* Mobile overlay — background is solid from the first frame (initial={false})
-          so page content can never show through; only the links animate in. */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            key="mobile-menu"
-            initial={false}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-canvas md:hidden"
-          >
-            <div className="dotgrid pointer-events-none absolute inset-0 opacity-50" aria-hidden />
-            <div className="shell relative flex h-full flex-col justify-center gap-2 pt-16">
-              {links.map((l, i) => {
-                const active = pathname === l.href;
-                return (
-                  <motion.div
-                    key={l.href}
-                    initial={{ opacity: 0, x: -24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 + i * 0.07, ease: [0.16, 1, 0.3, 1], duration: 0.5 }}
-                  >
-                    <Link
-                      href={l.href}
-                      className="flex items-baseline gap-4 border-b border-line py-5"
-                    >
-                      <span className="font-mono text-xs text-graphite">{l.no}</span>
-                      <span
-                        className={`display text-5xl ${active ? 'italic text-signal-red' : ''}`}
-                      >
-                        {l.label}
-                      </span>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
+
+    {/* Mobile overlay — rendered OUTSIDE <header> so the header's backdrop-blur
+        (a backdrop-filter containing block) can't trap this fixed panel inside
+        the header box. Solid from the first frame (initial={false}) so page
+        content never shows through, even after scrolling down. */}
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          key="mobile-menu"
+          initial={false}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-40 overflow-y-auto bg-canvas md:hidden"
+        >
+          <div className="dotgrid pointer-events-none absolute inset-0 opacity-50" aria-hidden />
+          <div className="shell relative flex min-h-full flex-col justify-center gap-2 py-24">
+            {links.map((l, i) => {
+              const active = pathname === l.href;
+              return (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.08 + i * 0.07, ease: [0.16, 1, 0.3, 1], duration: 0.5 }}
+                >
+                  <Link href={l.href} className="flex items-baseline gap-4 border-b border-line py-5">
+                    <span className="font-mono text-xs text-graphite">{l.no}</span>
+                    <span className={`display text-5xl ${active ? 'italic text-signal-red' : ''}`}>
+                      {l.label}
+                    </span>
+                  </Link>
+                </motion.div>
+              );
+            })}
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mt-10 flex items-center gap-4"
+            >
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink transition-colors hover:bg-ink hover:text-canvas"
+              >
+                <LinkedInIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-signal-green transition-colors hover:bg-signal-green hover:text-canvas"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+              </a>
+              <a
+                href={`tel:${profile.phoneDial}`}
+                className="ml-1 text-sm text-graphite transition-colors hover:text-ink"
+              >
+                {profile.phone}
+              </a>
+            </motion.div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 }
