@@ -6,18 +6,19 @@ export default function Footer() {
   return (
     <footer className="relative mt-32 border-t border-line bg-paper">
       <div className="shell py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-6">
-            <p className="eyebrow mb-5">Let&apos;s build integrity into it</p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="display link-underline text-[clamp(2rem,6vw,4rem)]"
-            >
-              {profile.email}
-            </a>
-          </div>
+        {/* Email — its own full-width row so the long address never collides */}
+        <div className="border-b border-line pb-12">
+          <p className="eyebrow mb-5">Let&apos;s build integrity into it</p>
+          <a
+            href={`mailto:${profile.email}`}
+            className="display link-underline inline-block max-w-full break-words text-[clamp(1.6rem,6.5vw,3.5rem)] leading-none"
+          >
+            {profile.email}
+          </a>
+        </div>
 
-          <div className="md:col-span-3">
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+          <div>
             <p className="eyebrow mb-4">Navigate</p>
             <ul className="space-y-2 text-sm text-graphite">
               <li><Link href="/" className="link-underline hover:text-ink">Index</Link></li>
@@ -27,7 +28,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-3">
+          <div>
             <p className="eyebrow mb-4">Elsewhere</p>
             <ul className="space-y-2 text-sm text-graphite">
               <li>
@@ -41,6 +42,14 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+          </div>
+
+          <div className="sm:col-span-2 md:col-span-1">
+            <p className="eyebrow mb-4">Availability</p>
+            <p className="flex items-start gap-2 text-sm text-graphite">
+              <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-signal-green" />
+              Open to research-ethics, compliance &amp; governance mandates.
+            </p>
           </div>
         </div>
 

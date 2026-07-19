@@ -43,7 +43,7 @@ export default function Nav() {
     >
       <div className={`h-px w-full origin-left transition-opacity duration-500 ${scrolled ? 'bg-line opacity-100' : 'opacity-0'}`} />
       <div className="shell flex items-center justify-between py-4 md:py-5">
-        <Link href="/" className="group flex items-center gap-3" aria-label="Home">
+        <Link href="/" className="group relative z-50 flex items-center gap-3" aria-label="Home">
           <span className="relative flex h-9 w-9 items-center justify-center">
             <span className="absolute inset-0 rounded-full border border-ink/25" />
             <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal-red" />
@@ -99,14 +99,16 @@ export default function Nav() {
         </button>
       </div>
 
-      {/* Mobile overlay — solid panel that slides down (never see-through) */}
+      {/* Mobile overlay — background is solid from the first frame (initial={false})
+          so page content can never show through; only the links animate in. */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ y: '-100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '-100%' }}
-            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            key="mobile-menu"
+            initial={false}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             className="fixed inset-0 z-40 bg-canvas md:hidden"
           >
             <div className="dotgrid pointer-events-none absolute inset-0 opacity-50" aria-hidden />
