@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { Fragment, type ReactNode } from 'react';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -25,7 +25,7 @@ export function Reveal({
       className={className}
       initial={{ opacity: 0, y: reduce ? 0 : y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-12% 0px' }}
+      viewport={{ once: true, margin: '-10% 0px' }}
       transition={{ duration: 0.75, delay, ease: EASE }}
     >
       {children}
@@ -33,7 +33,9 @@ export function Reveal({
   );
 }
 
-// Word-by-word display heading reveal with a subtle 3D tilt on entry.
+// Word-by-word heading reveal. Plays on MOUNT (not whileInView) so the text is
+// always guaranteed to end up visible — an IntersectionObserver miss can never
+// leave a title blank. Each word rises out of its own clip mask.
 export function RevealHeading({
   text,
   className,
@@ -45,21 +47,33 @@ export function RevealHeading({
 }) {
   const reduce = useReducedMotion();
   const words = text.split(' ');
+
+  if (reduce) {
+    return <span className={className}>{text}</span>;
+  }
+
   return (
-    <span className={className} style={{ display: 'inline-block', perspective: 800 }}>
+    <span className={className}>
       {words.map((w, i) => (
-        <span key={i} style={{ display: 'inline-block', overflow: 'hidden', paddingBottom: '0.08em' }}>
-          <motion.span
-            style={{ display: 'inline-block', transformOrigin: 'bottom' }}
-            initial={{ y: reduce ? 0 : '108%', rotateX: reduce ? 0 : -55, opacity: 0 }}
-            whileInView={{ y: 0, rotateX: 0, opacity: 1 }}
-            viewport={{ once: true, margin: '-8% 0px' }}
-            transition={{ duration: 0.9, delay: delay + i * 0.06, ease: EASE }}
+        <Fragment key={i}>
+          <span
+            style={{
+              display: 'inline-block',
+              overflow: 'hidden',
+              verticalAlign: 'top',
+              paddingBottom: '0.12em',
+            }}
           >
-            {w}
-            {i < words.length - 1 ? ' ' : ''}
-          </motion.span>
-        </span>
+            <motion.span
+              style={{ display: 'inline-block' }}
+              initial={{ y: '110%' }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.8, delay: delay + i * 0.05, ease: EASE }}
+            >
+              {w}
+            </motion.span>
+          </span>{' '}
+        </Fragment>
       ))}
     </span>
   );

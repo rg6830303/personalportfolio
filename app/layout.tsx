@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Fraunces, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Fraunces, Libre_Franklin, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { profile } from '@/data/resume';
 import Nav from '@/components/Nav';
@@ -16,7 +16,7 @@ const display = Fraunces({
   display: 'swap',
 });
 
-const sans = Space_Grotesk({
+const sans = Libre_Franklin({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans',

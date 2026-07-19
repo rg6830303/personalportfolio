@@ -12,7 +12,7 @@ export default function PageHeader({
   intro: string;
 }) {
   return (
-    <header className="shell pb-14 pt-36 md:pb-20 md:pt-44">
+    <header className="shell pb-12 pt-28 md:pb-20 md:pt-40">
       <Reveal>
         <div className="mb-8 flex items-center gap-4">
           <span className="font-mono text-sm text-signal-red">{index}</span>

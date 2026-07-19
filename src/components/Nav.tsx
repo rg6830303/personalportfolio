@@ -99,17 +99,18 @@ export default function Nav() {
         </button>
       </div>
 
-      {/* Mobile overlay */}
+      {/* Mobile overlay — solid panel that slides down (never see-through) */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-paper md:hidden"
+            initial={{ y: '-100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '-100%' }}
+            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-40 bg-canvas md:hidden"
           >
-            <div className="shell flex h-full flex-col justify-center gap-2 pt-16">
+            <div className="dotgrid pointer-events-none absolute inset-0 opacity-50" aria-hidden />
+            <div className="shell relative flex h-full flex-col justify-center gap-2 pt-16">
               {links.map((l, i) => {
                 const active = pathname === l.href;
                 return (
