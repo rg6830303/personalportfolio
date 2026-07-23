@@ -58,15 +58,26 @@ export default function Home() {
               <p className="text-pretty text-lg leading-relaxed text-graphite">{profile.summary}</p>
             </Reveal>
 
-            <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded border border-line bg-line sm:grid-cols-4">
+            <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded border border-line bg-line sm:grid-cols-3 lg:grid-cols-5">
               {stats.map((s, i) => (
-                <Reveal key={i} delay={i * 0.08} className="bg-canvas p-5">
+                <Reveal key={i} delay={i * 0.07} className="bg-canvas p-5">
                   <span className={`mb-3 block h-1 w-8 ${toneClass[s.tone]}`} />
-                  <div className="display text-3xl md:text-4xl">{s.value}</div>
+                  <div className="display text-3xl md:text-4xl">
+                    {s.value}
+                    {s.note && <sup className="ml-0.5 align-super text-sm text-graphite">†</sup>}
+                  </div>
                   <div className="mt-2 text-xs leading-snug text-graphite">{s.label}</div>
                 </Reveal>
               ))}
             </div>
+            {stats.some((s) => s.note) && (
+              <Reveal delay={0.1}>
+                <p className="mt-4 flex items-start gap-2 text-xs text-graphite">
+                  <span className="text-graphite">†</span>
+                  {stats.find((s) => s.note)?.note}
+                </p>
+              </Reveal>
+            )}
           </div>
         </div>
       </section>

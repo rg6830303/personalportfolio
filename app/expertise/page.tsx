@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
 import { Reveal, RevealHeading } from '@/components/Reveal';
-import { competencies, education, training, engagements, languages, signalSystem } from '@/data/resume';
+import { competencies, education, training, engagements, languages, signalSystem, publications } from '@/data/resume';
 
 export const metadata: Metadata = {
   title: 'Expertise',
@@ -115,13 +115,58 @@ export default function ExpertisePage() {
         </div>
       </section>
 
-      {/* TRAINING */}
+      {/* RESEARCH OUTPUTS */}
       <section className="shell py-24">
-        <div className="grid gap-12 md:grid-cols-12">
+        <div className="mb-14 grid gap-6 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-8">
+            <Reveal>
+              <p className="eyebrow mb-6 flex items-center gap-3">
+                <span className="text-signal-red">C</span> Research outputs
+              </p>
+            </Reveal>
+            <h2 className="display text-[clamp(1.8rem,5vw,3.5rem)] leading-tight">
+              <RevealHeading text="Not just governing research — producing it." />
+            </h2>
+          </div>
+          <Reveal delay={0.1} className="md:col-span-4">
+            <p className="text-graphite md:text-right">
+              A current, peer-reviewed record in scholarly communication and research-ecosystem study.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid gap-px overflow-hidden rounded border border-line bg-line sm:grid-cols-2">
+          {publications.map((p, i) => (
+            <Reveal key={p.venue} delay={(i % 2) * 0.08} className="group bg-canvas p-7 transition-colors hover:bg-paper">
+              <div className="mb-8 flex items-center justify-between">
+                <span className={`inline-flex items-center gap-2 text-xs font-medium ${
+                  p.status === 'In progress' ? 'text-graphite' : 'text-ink'
+                }`}>
+                  <span className={`h-2 w-2 rounded-full ${toneDot[p.tone]}`} />
+                  {p.status}
+                </span>
+                <span className="font-mono text-xs text-graphite">{p.year}</span>
+              </div>
+              <h3 className="font-display text-xl leading-snug md:text-2xl">{p.venue}</h3>
+              <p className="mt-2 text-sm font-medium text-ink">{p.kind}</p>
+              <p className="mt-3 text-sm leading-relaxed text-graphite">{p.focus}</p>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={0.1}>
+          <p className="mt-5 text-xs text-graphite">
+            Venues: ICKOLIS, COLLNET &amp; LISACON (2026); systematic review in progress.
+          </p>
+        </Reveal>
+      </section>
+
+      {/* TRAINING */}
+      <section className="border-t border-line bg-paper py-24">
+        <div className="grid gap-12 shell md:grid-cols-12">
           <div className="md:col-span-4">
             <Reveal>
               <p className="eyebrow mb-6 flex items-center gap-3">
-                <span className="text-signal-yellow">C</span> Research-ethics training
+                <span className="text-signal-yellow">D</span> Research-ethics training
               </p>
             </Reveal>
             <Reveal delay={0.1}>
@@ -152,7 +197,7 @@ export default function ExpertisePage() {
           <div className="mb-14">
             <Reveal>
               <p className="eyebrow mb-6 flex items-center gap-3">
-                <span className="text-signal-red">D</span> Leadership & advocacy
+                <span className="text-signal-red">E</span> Leadership &amp; advocacy
               </p>
             </Reveal>
             <h2 className="display text-[clamp(1.8rem,5vw,3.5rem)]">
@@ -161,7 +206,11 @@ export default function ExpertisePage() {
           </div>
           <div className="grid gap-px overflow-hidden rounded border border-line bg-line md:grid-cols-2">
             {engagements.map((e, i) => (
-              <Reveal key={e.name} delay={(i % 2) * 0.08} className="bg-canvas p-8">
+              <Reveal key={e.name} delay={(i % 2) * 0.08} className="group bg-canvas p-8 transition-colors hover:bg-paper">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className={`h-2.5 w-2.5 rounded-full ${toneDot[e.tone]}`} />
+                  <span className="eyebrow text-[0.65rem]">{e.role}</span>
+                </div>
                 <h3 className="font-display text-2xl">{e.name}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-graphite">{e.note}</p>
               </Reveal>

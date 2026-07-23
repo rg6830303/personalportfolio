@@ -2,12 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHeader from '@/components/PageHeader';
 import Timeline from '@/components/Timeline';
-import { Reveal } from '@/components/Reveal';
+import { Reveal, RevealHeading } from '@/components/Reveal';
+import { honours } from '@/data/resume';
 
 export const metadata: Metadata = {
   title: 'Journey',
   description: 'Seventeen years across pharmaceutical R&D, academia and national digital-education governance.',
 };
+
+const honourTone = ['text-signal-red', 'text-signal-green', 'text-signal-yellow'];
 
 export default function JourneyPage() {
   return (
@@ -46,7 +49,28 @@ export default function JourneyPage() {
         <Timeline />
       </section>
 
-      <section className="shell pb-28">
+      {/* Honours & recognition */}
+      <section className="border-y border-line bg-paper py-20 md:py-24">
+        <div className="shell">
+          <Reveal>
+            <p className="eyebrow mb-8">Honours &amp; recognition</p>
+          </Reveal>
+          <h2 className="display mb-12 max-w-[18ch] text-[clamp(1.8rem,4.5vw,3.2rem)] leading-tight">
+            <RevealHeading text="Named, dated markers of the work." />
+          </h2>
+          <div className="grid gap-px overflow-hidden rounded border border-line bg-line md:grid-cols-3">
+            {honours.map((h, i) => (
+              <Reveal key={h.title} delay={i * 0.1} className="bg-canvas p-8">
+                <div className={`mb-6 font-mono text-sm ${honourTone[i % 3]}`}>{h.year}</div>
+                <h3 className="font-display text-xl leading-snug md:text-2xl">{h.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-graphite">{h.org}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="shell pb-28 pt-20">
         <Reveal>
           <div className="rule flex flex-col items-start justify-between gap-6 pt-10 md:flex-row md:items-center">
             <p className="max-w-md text-graphite">

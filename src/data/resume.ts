@@ -18,15 +18,21 @@ export const profile = {
   tagline:
     'A synthetic chemist turned governance leader — building the systems, policies and culture that keep research honest.',
   summary:
-    'Accomplished researcher and academic leader with a Ph.D. in Synthetic Organic Chemistry from IIT Bombay and 17+ years spanning pharmaceutical R&D, institutional governance, and large-scale digital education. I pair hands-on research experience — including regulatory-compliant laboratory operations at Cipla under CDSCO and GMP frameworks — with senior academic administration at the National Digital Library of India. My work sits across the full research lifecycle: responsible conduct of research, data privacy, IP, and publication ethics, informed by doctoral training, pharmaceutical compliance, and continued study in responsible AI, bibliometrics, and systematic review.',
+    'Accomplished researcher and academic leader with a Ph.D. in Synthetic Organic Chemistry from IIT Bombay and 17+ years spanning pharmaceutical R&D, institutional governance, and large-scale digital education. I pair hands-on research experience — including regulatory-compliant laboratory operations at Cipla under CDSCO and GMP frameworks — with senior governance at the National Digital Library of India, a Ministry of Education (NMEICT) initiative serving learners nationwide. My work sits across the full research lifecycle: responsible conduct of research, data privacy, IP, and publication ethics, informed by doctoral training, pharmaceutical compliance, an active scholarly-communication publication record, and continued study in responsible AI, bibliometrics, and systematic review.',
 };
 
-export type Stat = { value: string; label: string; tone: 'yellow' | 'green' | 'red' };
+export type Stat = { value: string; label: string; tone: 'yellow' | 'green' | 'red'; note?: string };
 export const stats: Stat[] = [
-  { value: '17+', label: 'Years across research & governance', tone: 'green' },
-  { value: 'Ph.D.', label: 'Synthetic Organic Chemistry, IIT Bombay', tone: 'red' },
-  { value: '7 yrs', label: 'Teaching research ethics & integrity', tone: 'yellow' },
-  { value: '2 nations', label: 'Academic integrity programmes delivered', tone: 'green' },
+  { value: '17+', label: 'Years across research, academia & governance', tone: 'green' },
+  { value: 'Ph.D.', label: 'Synthetic Organic Chemistry · IIT Bombay', tone: 'red' },
+  { value: '5+', label: 'Peer-reviewed papers & conference proceedings', tone: 'yellow' },
+  { value: '7 yrs', label: 'University lecturing & student mentoring', tone: 'green' },
+  {
+    value: '2',
+    label: 'Nations — academic-integrity programmes delivered',
+    tone: 'red',
+    note: 'India & Nigeria, via EdTech higher-education platforms (Aurus Tech).',
+  },
 ];
 
 export type Competency = { title: string; note: string; tone: 'yellow' | 'green' | 'red' };
@@ -39,7 +45,7 @@ export const competencies: Competency[] = [
   { title: 'Research Integrity & QA', note: 'Monitoring, deviations, corrective action', tone: 'red' },
   { title: 'Training Design & Delivery', note: 'Responsible conduct of research', tone: 'yellow' },
   { title: 'Accreditation Documentation', note: 'Audit-ready records at scale', tone: 'green' },
-  { title: 'Stakeholder Engagement', note: 'MoE, UGC & cross-functional bodies', tone: 'red' },
+  { title: 'Stakeholder Engagement', note: 'MoE, UGC & NDLI cross-functional bodies', tone: 'red' },
   { title: 'Responsible AI in Research', note: 'Ethical deployment & usage guidelines', tone: 'yellow' },
   { title: 'Data Privacy & Confidentiality', note: 'High-stakes institutional records', tone: 'green' },
   { title: 'Project & Records Management', note: 'Audit trails that survive review', tone: 'yellow' },
@@ -93,16 +99,16 @@ export const experience: Role[] = [
     ],
   },
   {
-    title: 'Coordinator & Lecturer — Science, Research Ethics & Curriculum',
-    org: 'CPS (HS Section)',
+    title: 'Coordinator & Lecturer — Chemistry, Environmental Science & Curriculum',
+    org: 'CPS (Higher Secondary Section)',
     period: 'Jun 2014 — Dec 2021',
     tone: 'green',
     award: 'Pathbreaker of the Year 2021',
     points: [
-      'Designed and delivered research ethics, responsible conduct of research and data integrity coursework for 7+ years.',
-      'Developed training materials on informed consent, conflict of interest, data privacy and ethical research design for students and faculty.',
+      'Lectured in chemistry, organic chemistry, biochemistry and environmental science across seven years, coordinating curriculum and the university science club.',
+      'Ran and supervised laboratory sessions on GC, NMR, centrifuge and Rotovap instruments — embedding lab-safety, health and data-integrity discipline in every practical.',
       'Coordinated interdisciplinary academic committees — managing member schedules, agendas, minutes and attendance records.',
-      'Mentored doctoral and research scholars on publication ethics, peer review standards and research integrity norms.',
+      'Mentored students and research scholars on academic honesty, laboratory ethics and responsible study practices.',
     ],
   },
   {
@@ -129,11 +135,12 @@ export const experience: Role[] = [
   {
     title: 'Research Scholar & Teaching Assistant',
     org: 'IIT Bombay',
+    meta: 'GATE-qualified · competitive MoE Teaching Assistantship',
     period: 'Jul 1998 — Aug 2003',
     tone: 'green',
     points: [
-      'Conducted doctoral research in Synthetic Organic Chemistry, applying institutional research ethics, laboratory safety standards and academic integrity protocols throughout.',
-      'Delivered undergraduate Chemistry instruction under a competitive MoE-funded Teaching Assistantship at an elite research institution.',
+      'Conducted doctoral research in Synthetic Organic Chemistry — molecular identification, rational drug design and the synthesis of pharmaceutically relevant compounds — under institutional research-ethics, lab-safety and academic-integrity protocols.',
+      'Taught undergraduate Chemistry to B.Tech students under a competitive, MoE-funded Teaching Assistantship secured through GATE.',
     ],
   },
 ];
@@ -143,7 +150,7 @@ export const education: Education[] = [
   {
     degree: 'Ph.D. in Synthetic Organic Chemistry',
     institution: 'Indian Institute of Technology Bombay',
-    note: 'Doctoral training in responsible conduct of research, laboratory ethics, IP, data integrity and peer review.',
+    note: 'Doctoral research in molecular identification, rational drug design and the synthesis of pharmaceutically relevant compounds — grounding responsible conduct of research, laboratory ethics, IP, data integrity and peer review. GATE-qualified; held a competitive MoE Teaching Assistantship.',
     tone: 'red',
   },
   {
@@ -174,12 +181,32 @@ export const training: string[] = [
   'CII Education East Summits — National dialogues on research governance & industry–academia collaboration',
 ];
 
-export type Engagement = { name: string; note: string };
+export type Engagement = { name: string; role: string; note: string; tone: 'yellow' | 'green' | 'red' };
 export const engagements: Engagement[] = [
-  { name: 'Iron Lady Warrior', note: "Mentorship and advocacy network championing women's leadership and inclusion in STEM and academia." },
-  { name: 'Mentor to Go', note: 'App-based mentoring platform supporting economically disadvantaged youth toward research and industry careers.' },
-  { name: 'SK & Associates', note: 'Strategic alliance associate fostering student entrepreneurship, innovation ecosystems and ethical research culture.' },
-  { name: 'Writebox', note: 'R&D mentorship and academic development leadership for an EdTech research community.' },
+  {
+    name: 'Iron Lady Warrior',
+    role: 'Mentor & advocate',
+    note: 'Championing women’s leadership in STEM — modelling the mentorship ethics and equitable-conduct norms that underpin research integrity.',
+    tone: 'red',
+  },
+  {
+    name: 'Mentor to Go',
+    role: 'Mentor',
+    note: 'Guiding economically disadvantaged youth toward research and industry careers, with an emphasis on responsible, honest scholarship.',
+    tone: 'yellow',
+  },
+  {
+    name: 'SK & Associates',
+    role: 'Strategic alliance associate',
+    note: 'Fostering student entrepreneurship and innovation while embedding an ethical, integrity-first research culture.',
+    tone: 'green',
+  },
+  {
+    name: 'Writebox',
+    role: 'R&D mentorship lead',
+    note: 'Academic-development leadership for an EdTech research community — advising on responsible-AI use and sound authorship practice.',
+    tone: 'red',
+  },
 ];
 
 export const languages = ['English', 'Hindi', 'Bengali'];
@@ -220,4 +247,54 @@ export const services: string[] = [
   'Regulatory compliance & accreditation documentation',
   'Responsible-AI usage frameworks for research & education',
   'Publication ethics, IP & data-integrity advisory',
+];
+
+export type Publication = {
+  venue: string;
+  year: string;
+  kind: string;
+  focus: string;
+  status: 'Presented' | 'Accepted' | 'In progress';
+  tone: 'yellow' | 'green' | 'red';
+};
+export const publications: Publication[] = [
+  {
+    venue: 'ICKOLIS 2026',
+    year: '2026',
+    kind: 'Conference paper',
+    focus: 'Knowledge organisation & information systems in academic libraries',
+    status: 'Presented',
+    tone: 'red',
+  },
+  {
+    venue: 'COLLNET 2026',
+    year: '2026',
+    kind: 'Conference paper',
+    focus: 'Scientometrics, informetrics & scholarly-collaboration networks',
+    status: 'Presented',
+    tone: 'green',
+  },
+  {
+    venue: 'LISACON 2026',
+    year: '2026',
+    kind: 'Abstract',
+    focus: 'Library & information science — research-data practice',
+    status: 'Accepted',
+    tone: 'yellow',
+  },
+  {
+    venue: '“Data-Driven Research Ecosystems in Academic Libraries”',
+    year: '2026',
+    kind: 'Systematic review · co-authored (5 authors)',
+    focus: 'Evidence synthesis on data-driven research ecosystems',
+    status: 'In progress',
+    tone: 'green',
+  },
+];
+
+export type Honour = { title: string; year: string; org: string };
+export const honours: Honour[] = [
+  { title: 'Pathbreaker of the Year', year: '2021', org: 'For pedagogy, mentoring & academic leadership' },
+  { title: 'GATE-qualified (Chemistry)', year: '1997', org: 'Graduate Aptitude Test in Engineering' },
+  { title: 'MoE Teaching Assistantship', year: '1998–2003', org: 'Competitive doctoral fellowship, IIT Bombay' },
 ];
